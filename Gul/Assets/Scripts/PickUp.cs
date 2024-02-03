@@ -5,10 +5,12 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public GameObject holding;
+    public bool Holding = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         holding.GetComponent<MeshRenderer>().enabled = false;
     }
 
@@ -21,6 +23,7 @@ public class PickUp : MonoBehaviour
     {
         if (other.gameObject.tag == "PickUp")
         {
+            Holding = true;
             holding.GetComponent<MeshRenderer>().enabled = true;
             Destroy(other.gameObject);
         }

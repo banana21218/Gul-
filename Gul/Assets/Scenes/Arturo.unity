@@ -603,6 +603,7 @@ GameObject:
   - component: {fileID: 1446402286}
   - component: {fileID: 1446402287}
   - component: {fileID: 1446402288}
+  - component: {fileID: 1446402289}
   m_Layer: 0
   m_Name: Seagul
   m_TagString: Untagged
@@ -623,6 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holding: {fileID: 148463606}
+  Holding: 0
 --- !u!4 &1446402285
 Transform:
   m_ObjectHideFlags: 0
@@ -729,6 +731,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1446402289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446402283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662bdca68579e7b48938679fc8b5bc05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drop: {fileID: 233177205166104418, guid: 898632587225f7f43894c8e029a5f977, type: 3}
+  once: 1
 --- !u!1 &1533197215
 GameObject:
   m_ObjectHideFlags: 0
