@@ -10,8 +10,8 @@ public class PickUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        holding.GetComponent<MeshRenderer>().enabled = false;
+
+        holding.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class PickUp : MonoBehaviour
         if (other.gameObject.tag == "PickUp")
         {
             Holding = true;
-            holding.GetComponent<MeshRenderer>().enabled = true;
+            holding.SetActive(true);
             Destroy(other.gameObject);
         }
     }

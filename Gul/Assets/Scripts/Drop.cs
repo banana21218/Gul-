@@ -7,6 +7,7 @@ public class Drop : MonoBehaviour
     public GameObject drop;
     private Vector3 dropPoint;
     public bool once = true;
+    public GameObject ObjectPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +21,9 @@ public class Drop : MonoBehaviour
         {
             if (Input.GetKey("f"))
             {
-                Debug.Log("hmmmm");
                 if(once == true)
                 {
-                    Debug.Log("bruh");
                     Dropping();
-                    Debug.Log("help");
                     once = false;
                 }
             }
@@ -34,8 +32,8 @@ public class Drop : MonoBehaviour
     }
     public void Dropping()
     {
-        Instantiate(drop, transform.position, Quaternion.identity);
+        Instantiate(drop, ObjectPoint.transform.position , Quaternion.identity);
         GameObject held = GetComponent<PickUp>().holding;
-        held.GetComponent<MeshRenderer>().enabled = false;
+        held.SetActive(false);
     }
 }

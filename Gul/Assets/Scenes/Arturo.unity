@@ -745,6 +745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drop: {fileID: 233177205166104418, guid: 898632587225f7f43894c8e029a5f977, type: 3}
   once: 1
+  ObjectPoint: {fileID: 148463606}
 --- !u!1 &1533197215
 GameObject:
   m_ObjectHideFlags: 0
