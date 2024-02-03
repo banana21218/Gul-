@@ -17,11 +17,12 @@ public class PickUp : MonoBehaviour
     {
         
     }
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "PickUp")
+        if (other.gameObject.tag == "PickUp")
         {
             holding.GetComponent<MeshRenderer>().enabled = true;
+            Destroy(other.gameObject);
         }
     }
 }
