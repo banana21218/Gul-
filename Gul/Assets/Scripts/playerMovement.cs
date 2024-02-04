@@ -24,7 +24,7 @@ public class playerMovement : MonoBehaviour
 
     public Transform poopLoc;
     public GameObject poopPrefab;
-    public int food;
+    public int food = 0;
     public bool canPoo = true;
     public float poopInterval = 10f;
 
@@ -32,11 +32,14 @@ public class playerMovement : MonoBehaviour
     public bool grabbed;
     public GameObject targetObj;
 
+    private UIManager ui;
+
     GameObject player;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         canPoo = true;
+        ui = GameObject.Find("GameManager").GetComponent<UIManager>();
     }
 
 
@@ -226,6 +229,7 @@ public class playerMovement : MonoBehaviour
                 Debug.Log("Can't poop yet");
             }
             food--;
+            ui.updateFood(food);
         }
         else
         {
@@ -257,6 +261,7 @@ public class playerMovement : MonoBehaviour
             Debug.Log("Collided with interactable");
             collision.gameObject.SetActive(false);
             food++;
+            ui.updateFood(food);
         }
     }
 }
