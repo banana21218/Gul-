@@ -18,8 +18,14 @@ public class playerMovement : MonoBehaviour
     public Transform front;
     public Transform back;
 
+    public Transform tailup;
+    public Transform taildown;
+
+    public Transform poopLoc;
+    public GameObject poopPrefab;
     public int food;
     public bool canPoo = true;
+    public float poopInterval = 10f;
 
     GameObject player;
     // Start is called before the first frame update
@@ -126,7 +132,7 @@ public class playerMovement : MonoBehaviour
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
             if (hit.distance < 1)
             {
-                if(hit.transform.tag == "Interactable")
+                if(hit.transform.tag == "Interactable" || hit.transform.tag == "Eatable")
                 {
                     return true;
                 }
@@ -168,21 +174,35 @@ public class playerMovement : MonoBehaviour
 
     private void throwPoop()
     {
-        if(canPoo == true)
+        if(food >= 1)
         {
-            canPoo = false;
-            StartCoroutine(poopTimer());
+            if(canPoo == true)
+            {
+                canPoo = false;
+                StartCoroutine(poopTimer());
+            }
+            else
+            {
+                Debug.Log("Can't poop yet");
+            }
+            food--;
         }
         else
         {
-            Debug.Log("Can't poop yet");
+            Debug.Log("Out of food");
         }
     }
 
     private IEnumerator poopTimer()
     {
         Debug.Log("Pooped");
-        yield return new WaitForSeconds(5f);
+        tailup.gameObject.SetActive(false);
+        taildown.gameObject.SetActive(true);
+        GameObject poop = Instantiate(poopPrefab, poopLoc.transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(poopInterval);
+        tailup.gameObject.SetActive(true);
+        taildown.gameObject.SetActive(false);
         canPoo = true;
     }
 
@@ -191,6 +211,12 @@ public class playerMovement : MonoBehaviour
         if(collision.transform.tag == "Interactable")
         {
             Debug.Log("Collided with interactable");
+        }
+        else if (collision.transform.tag == "Eatable")
+        {
+            Debug.Log("Collided with interactable");
+            collision.gameObject.SetActive(false);
+            food++;
         }
     }
 }
