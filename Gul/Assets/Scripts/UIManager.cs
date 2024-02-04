@@ -6,7 +6,6 @@ using TMPro;
 using UnityEngine.InputSystem;
 using UnityEditor;
 using UnityEngine.Android;
-using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,7 +22,6 @@ public class UIManager : MonoBehaviour
 
     public bool gamePaused;
     public GameObject pausedMenu;
-    public GameObject howto;
 
     private void Start()
     {
@@ -70,21 +68,7 @@ public class UIManager : MonoBehaviour
         Debug.Log("Unpaused");
         Time.timeScale = 1.0f;
         pausedMenu.SetActive(false);
-        closeHowTo();
     }
 
-    public void openHowTo()
-    {
-        howto.SetActive(true);
-    }
 
-    public void closeHowTo()
-    {
-        howto.SetActive(false);
-    }
-
-    public void goToMainMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
 }
