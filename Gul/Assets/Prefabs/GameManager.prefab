@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 600228479542841743}
   - component: {fileID: 3221954593731863108}
+  - component: {fileID: 9017552817326383883}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -143,3 +144,18 @@ MonoBehaviour:
   m_DefaultActionMap: Movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &9017552817326383883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834538069461365010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fdfb56df0f208e4d850c0c9be1f21c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodNum: {fileID: 0}
+  TimerText: {fileID: 0}
+  playing: 0
