@@ -887,15 +887,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446402283}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9feb831b1257b6640a8f30f02ea5d30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gul: {fileID: 1446402283}
-  Gul: {x: 0, y: 0, z: 0}
-  Push: {fileID: 87773575}
-  pushed: {fileID: 1446402285}
 --- !u!1 &1533197215
 GameObject:
   m_ObjectHideFlags: 0

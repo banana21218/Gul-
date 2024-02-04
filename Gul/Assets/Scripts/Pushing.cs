@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Pushing : MonoBehaviour
 {
-    public GameObject gul;
-    public Vector3 Gul;
-    public GameObject Push;
-    public Transform pushed;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +20,6 @@ public class Pushing : MonoBehaviour
     {
         if(collision.gameObject.tag == "Pushable")
         {
-
-            collision.gameObject.GetComponent<Transform>().position = Gul;
-            Gul = Push.transform.position;
-            Push.transform.SetParent(pushed);
 
         }
     }
