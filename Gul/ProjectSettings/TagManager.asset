@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - Eatable
+  - Ground
   layers:
   - Default
   - TransparentFX

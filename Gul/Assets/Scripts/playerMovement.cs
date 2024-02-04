@@ -6,6 +6,7 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
+using static UnityEngine.UI.Image;
 
 public class playerMovement : MonoBehaviour
 {
@@ -26,6 +27,10 @@ public class playerMovement : MonoBehaviour
     public int food;
     public bool canPoo = true;
     public float poopInterval = 10f;
+
+    public Transform grabLoc;
+    public bool grabbed;
+    public GameObject targetObj;
 
     GameObject player;
     // Start is called before the first frame update
@@ -64,6 +69,26 @@ public class playerMovement : MonoBehaviour
         if (context.started)
         {
             throwPoop();
+        }
+    }
+
+    public void grabbing(InputAction.CallbackContext context)
+    {
+
+        if (context.performed)
+        {
+            grabbed = true;
+            if(checkForPickup() == true)
+            {
+                targetObj.transform.parent = grabLoc;
+                targetObj.GetComponent<Rigidbody>().useGravity = false;
+            }
+        }
+        else if (context.canceled)
+        {
+            grabbed = false;
+            targetObj.transform.parent = null;
+            targetObj.GetComponent<Rigidbody>().useGravity = true;
         }
     }
 
@@ -112,14 +137,29 @@ public class playerMovement : MonoBehaviour
 
     }
 
-    private void checkForPickup()
+    private bool checkForPickup()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        //Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity)
+        if (Physics.Raycast(grabLoc.transform.position, transform.forward, out hit, Mathf.Infinity))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Did Hit");
+            //Debug.Log(hit.distance);
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
+            if (hit.distance < 3)
+            {
+                if (hit.transform.tag == "Interactable")
+                {
+                    targetObj = hit.transform.gameObject;
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
+        return false;
     }
 
     private bool movementCheck(Vector3 direction, Vector3 origin)
