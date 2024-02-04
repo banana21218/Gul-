@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
         else if (Timer == 0)
         {
             endScreen.SetActive(true);
-            endScore.SetText(points.ToString() + Points!);
+            endScore.SetText(points.ToString() + " Points!");
         }
     }
 
