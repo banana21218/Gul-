@@ -11,19 +11,30 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] TMP_Text foodNum;
+    [SerializeField] TMP_Text pointTxt;
+    [SerializeField] TMP_Text endScore;
+
+    public int points;
+
     public void updateFood(int food)
     {
         //GameObject.Find("FoodNum");
         foodNum.SetText(food.ToString());
     }
+
+    public void updatePoints()
+    {
+        pointTxt.SetText(points.ToString());
+    }
     //
     public TMP_Text TimerText;
     public bool playing = true;
-    private float Timer = 600;
+    public float Timer = 600;
 
     public bool gamePaused;
     public GameObject pausedMenu;
     public GameObject howto;
+    public GameObject endScreen;
 
     private void Start()
     {
@@ -38,6 +49,11 @@ public class UIManager : MonoBehaviour
         if (Timer != 0)
         {
             StartCoroutine(timer());
+        }
+        else if (Timer == 0)
+        {
+            endScreen.SetActive(true);
+            endScore.SetText(points.ToString() + Points!);
         }
     }
 
@@ -86,5 +102,10 @@ public class UIManager : MonoBehaviour
     public void goToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void replay()
+    {
+        SceneManager.LoadScene(1);
     }
 }
