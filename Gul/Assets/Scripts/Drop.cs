@@ -5,6 +5,7 @@ using UnityEngine;
 public class Drop : MonoBehaviour
 {
     public GameObject drop;
+    private Vector3 dropPoint;
     public bool once = true;
     public GameObject ObjectPoint;
     // Start is called before the first frame update
@@ -31,10 +32,8 @@ public class Drop : MonoBehaviour
     }
     public void Dropping()
     {
+        Instantiate(drop, ObjectPoint.transform.position , Quaternion.identity);
         GameObject held = GetComponent<PickUp>().holding;
         held.SetActive(false);
-        Instantiate(drop, ObjectPoint.transform.position , Quaternion.identity);
- 
- 
     }
 }
